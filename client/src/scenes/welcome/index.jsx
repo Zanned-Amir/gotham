@@ -1,7 +1,11 @@
 import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom';
 const Welcome = () => {
+    const Navigate = useNavigate();
+    const handleClick = (path) => () => {
+        Navigate(path);
+    };
   return (
     <Box display="flex" 
     height="100vh" 
@@ -16,11 +20,10 @@ const Welcome = () => {
             backgroundRepeat: 'no-repeat' ,
             backgroundPosition: 'center'}}>
         </Box> 
-            <Button>
-                <Typography variant="h4">
-                    Welcome to the Batcave
-                </Typography>
-            </Button>
+        <Button  color="secondary" variant="contained" sx={{ mt: "20px" }} onClick={handleClick("/user")} >
+                  
+                  WELCOME TO THE BATCAVE
+                </Button>
         
             
     </Box>
