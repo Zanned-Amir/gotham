@@ -24,6 +24,10 @@ const Welcome = () => {
                   
                   WELCOME TO THE BATCAVE
                 </Button>
+                <Button  color="secondary" variant="contained" sx={{ mt: "20px" }} onClick={handleClick("/")} >
+                  
+                  go back
+                </Button>
         
             
     </Box>
