@@ -1,5 +1,5 @@
 import { tokens } from "../theme";
-export const mockBumpData = [
+export const mockLineData = [
   {
     id: "Burglary",
     color: tokens("dark").dun[500],
@@ -165,3 +165,30 @@ export const mockBumpData = [
     ],
   },
 ];
+
+export const mockPieData = [
+  {
+    "id": "3",
+    "label": "Type 3",
+    "value": 27,
+    "color": "hsl(3, 70%, 50%)"
+  },
+  {
+    "id": "4",
+    "label": "Type 4",
+    "value": 26,
+    "color": "hsl(4, 70%, 50%)"
+  },
+  {
+    "id": "2",
+    "label": "Type 2",
+    "value": 26,
+    "color": "hsl(2, 70%, 50%)"
+  },
+  {
+    "id": "1",
+    "label": "Type 1",
+    "value": 21,
+    "color": "hsl(1, 70%, 50%)"
+  }
+]

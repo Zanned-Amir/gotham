@@ -14,6 +14,7 @@ const Auth = () => {
   const colors = tokens(theme.palette.mode);
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const initialValues = {
+    
     email: "",
     password: "",
   };

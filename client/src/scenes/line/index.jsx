@@ -1,16 +1,16 @@
 import { Box } from "@mui/material";
 import Header from "../../components/Header";
-import BumpChart from "../../components/BumpChart";
+import LineChart from "../../components/LineChart";
 
-const Bump = () => {
+const Line = () => {
   return (
     <Box m="20px">
       <Header title="Bump Chart" subtitle="Simple Bump Chart" />
       <Box height="75vh">
-        <BumpChart />
+        <LineChart />
       </Box>
     </Box>
   );
 };
 
-export default Bump;
+export default Line;

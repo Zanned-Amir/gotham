@@ -1,7 +1,7 @@
 import { ResponsiveBump } from "@nivo/bump";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { mockBumpData as data } from "../data/mockData";
+import { mockLineData as data } from "../data/mockData";
 
 const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
