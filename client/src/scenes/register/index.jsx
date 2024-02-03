@@ -1,5 +1,5 @@
 import { Box, Button, TextField } from "@mui/material";
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
@@ -19,6 +19,7 @@ const Register = () => {
     phoneNumber: "",
     email: "",
     password: "",
+    gender: '',
   };
   const checkoutSchema = yup.object().shape({
     fullName: yup.string().required(),
@@ -85,6 +86,17 @@ const Register = () => {
                     }
                   }
                 />
+                <div id="gender-radio-group">Gender</div>
+        <div role="group" aria-labelledby="gender-radio-group">
+          <label>
+            <Field type="radio" name="gender" value="Male" />
+            Male
+          </label>
+          <label>
+            <Field type="radio" name="gender" value="Female" />
+            Female
+          </label>
+        </div>
                 <TextField
                   fullWidth
                   variant="filled"

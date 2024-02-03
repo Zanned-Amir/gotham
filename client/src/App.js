@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Auth from "./scenes/auth";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -12,8 +12,16 @@ function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
-  const [isLoggedin, setIsLoggedin] = useState(true);
-
+  const [isLoggedin, setIsLoggedin] = useState(false);
+useEffect(() => { 
+  const token = localStorage.getItem('token');
+  if (token) {
+    setIsLoggedin(true);
+  } else {
+    setIsLoggedin(false);
+  }
+}
+, [isLoggedin]);
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
