@@ -1,106 +1,167 @@
 import { tokens } from "../theme";
-export const mockLineData = [
-    {
-      id: "natra",
-      color: tokens("dark").dun[500],
-      data: [
-        {
-          x: "monday",
-          y: 101,
-        },
-        {
-          x: "tuesday",
-          y: 75,
-        },
-        {
-          x: "wednesday",
-          y: 36,
-        },
-        {
-          x: "thursday",
-          y: 216,
-        },
-        {
-          x: "friday",
-          y: 35,
-        },
-        {
-          x: "saturday",
-          y: 236,
-        },
-        {
-          x: "sunday",
-          y: 88,
-        },
-      ],
-    },
-    {
-      id: "brakage",
-      color: tokens("dark").primary[300],
-      data: [
-        {
-          x: "monday",
-          y: 212,
-        },
-        {
-          x: "tuesday",
-          y: 190,
-        },
-        {
-          x: "wednesday",
-          y: 270,
-        },
-        {
-          x: "thursday",
-          y: 9,
-        },
-        {
-          x: "friday",
-          y: 75,
-        },
-        {
-          x: "saturday",
-          y: 175,
-        },
-        {
-          x: "sunday",
-          y: 33,
-        },
-        
-      ],
-    },
-    {
-      id: "serka",
-      color: tokens("dark").dun[900],
-      data: [
-        {
-          x: "monday",
-          y: 191,
-        },
-        {
-          x: "tuesday",
-          y: 136,
-        },
-        {
-          x: "wednesday",
-          y: 91,
-        },
-        {
-          x: "thursday",
-          y: 190,
-        },
-        {
-          x: "friday",
-          y: 211,
-        },
-        {
-          x: "saturday",
-          y: 152,
-        },
-        {
-          x: "sunday",
-          y: 189,
-        },
-      ],
-    },
-  ];
+export const mockBumpData = [
+  {
+    id: "Burglary",
+    color: tokens("dark").dun[500],
+    data: [
+      {
+        x: "Friday",
+        type: 4,
+        y: 4,
+      },
+      {
+        x: "Monday",
+        type: 4,
+        y: 2,
+      },
+      {
+        x: "Saturday",
+        type: 4,
+        y: 1,
+      },
+      {
+        x: "Sunday",
+        type: 4,
+        y: 6,
+      },
+      {
+        x: "Thursday",
+        type: 4,
+        y: 4,
+      },
+      {
+        x: "Tuesday",
+        type: 4,
+        y: 3,
+      },
+      {
+        x: "Wednesday",
+        type: 4,
+        y: 10,
+      },
+    ],
+  },
+  {
+    id: "Robbery",
+    color: tokens("dark").primary[500],
+    data: [
+      {
+        x: "Friday",
+        type: 1,
+        y: 5,
+      },
+      {
+        x: "Monday",
+        type: 1,
+        y: 3,
+      },
+      {
+        x: "Saturday",
+        type: 1,
+        y: 4,
+      },
+      {
+        x: "Sunday",
+        type: 1,
+        y: 1,
+      },
+      {
+        x: "Thursday",
+        type: 1,
+        y: 3,
+      },
+      {
+        x: "Tuesday",
+        type: 1,
+        y: 2,
+      },
+      {
+        x: "Wednesday",
+        type: 1,
+        y: 5,
+      },
+    ],
+  },
+  {
+    id: "Shoplifting",
+    color: tokens("dark").grey[500],
+    data: [
+      {
+        x: "Friday",
+        type: 2,
+        y: 6,
+      },
+      {
+        x: "Monday",
+        type: 2,
+        y: 4,
+      },
+      {
+        x: "Saturday",
+        type: 2,
+        y: 3,
+      },
+      {
+        x: "Sunday",
+        type: 2,
+        y: 4,
+      },
+      {
+        x: "Thursday",
+        type: 2,
+        y: 5,
+      },
+      {
+        x: "Tuesday",
+        type: 2,
+        y: 5,
+      },
+      {
+        x: "Wednesday",
+        type: 2,
+        y: 2,
+      },
+    ],
+  },
+  {
+    id: "Identity Theft",
+    color: tokens("dark").primary[300],
+    data: [
+      {
+        x: "Friday",
+        type: 3,
+        y: 4,
+      },
+      {
+        x: "Monday",
+        type: 3,
+        y: 5,
+      },
+      {
+        x: "Saturday",
+        type: 3,
+        y: 3,
+      },
+      {
+        x: "Sunday",
+        type: 3,
+        y: 3,
+      },
+      {
+        x: "Thursday",
+        type: 3,
+        y: 3,
+      },
+      {
+        x: "Tuesday",
+        type: 3,
+        y: 3,
+      },
+      {
+        x: "Wednesday",
+        type: 3,
+        y: 6,
+      },
+    ],
+  },
+];
