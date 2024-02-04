@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Register = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -29,11 +29,21 @@ const Register = () => {
   });
   const handleFormSubmit = (values) => {
     console.log(values);
+    fetch("http://localhost/user/register",{method: "POST", body: JSON.stringify(values)}).then(async(res) => {
+      if (!res.ok){
+        throw new Error('Network response was not ok');
+      }
+      const response = await res.json();
+      localStorage.setItem("token",response.token);
+
+    })
+    .catch(()=> alert("Failed to log in"));
+    navigate("/dashboard")
     
   };
     const handleClick = (path) => () => {
-        navigate(path);
-    };
+    navigate(path);
+  };
   return (
     <Box display="flex" height="100vh">
       <Box flex="1" height="100%" width="100%"style={{backgroundImage: 'url("https://media1.tenor.com/m/iNGAKmaVB6oAAAAC/batman.gif")', backgroundSize: 'cover', backgroundPosition: 'center'}}/>
@@ -176,7 +186,7 @@ const Register = () => {
                   
                   go back
                 </Button>
-                <Button type="submit" color="secondary" variant="contained" sx={{ ml: "20px" }} onClick={handleClick("/welcome")} >
+                <Button type="submit" color="secondary" variant="contained" sx={{ ml: "20px" }}  >
                   
                   CREATE NEW USER 
                 </Button>
