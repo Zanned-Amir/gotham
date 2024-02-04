@@ -9,6 +9,8 @@ import Register from "./scenes/register";
 import Welcome from "./scenes/welcome";
 import Sidebar from "./scenes/global/sidebar";
 import Line from "./scenes/line";
+import Pie from "./scenes/pie";
+import HM from "./scenes/heatmap";
 // import Dashboard from "./scenes/dashboard";
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
   const [isSidebar, setIsSidebar] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const pyodide = window.pyodide;
+  
 useEffect(() => { 
   const token = localStorage.getItem('token');
   if (token) {
@@ -41,6 +45,8 @@ useEffect(() => {
               <Route path="/welcome" element={<Welcome />} />
               {/* <Route path="/dashboard" element={<Dashboard/>} /> */}
               <Route path="/line" element={<Line />} />
+              <Route path="/pie" element={<Pie />} />
+              <Route path="/heatmap" element={<HM />} />
             </Routes>
           </main>
         </div>
