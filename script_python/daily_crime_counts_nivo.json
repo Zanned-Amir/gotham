@@ -1,0 +1,166 @@
+[
+  {
+    "id": "type_1",
+    "color": "hsl(1, 70%, 50%)",
+    "data": [
+      {
+        "x": "Friday",
+        "type": 1,
+        "y": 3
+      },
+      {
+        "x": "Monday",
+        "type": 1,
+        "y": 3
+      },
+      {
+        "x": "Saturday",
+        "type": 1,
+        "y": 4
+      },
+      {
+        "x": "Sunday",
+        "type": 1,
+        "y": 1
+      },
+      {
+        "x": "Thursday",
+        "type": 1,
+        "y": 3
+      },
+      {
+        "x": "Tuesday",
+        "type": 1,
+        "y": 2
+      },
+      {
+        "x": "Wednesday",
+        "type": 1,
+        "y": 5
+      }
+    ]
+  },
+  {
+    "id": "type_2",
+    "color": "hsl(2, 70%, 50%)",
+    "data": [
+      {
+        "x": "Friday",
+        "type": 2,
+        "y": 5
+      },
+      {
+        "x": "Monday",
+        "type": 2,
+        "y": 2
+      },
+      {
+        "x": "Saturday",
+        "type": 2,
+        "y": 3
+      },
+      {
+        "x": "Sunday",
+        "type": 2,
+        "y": 4
+      },
+      {
+        "x": "Thursday",
+        "type": 2,
+        "y": 5
+      },
+      {
+        "x": "Tuesday",
+        "type": 2,
+        "y": 5
+      },
+      {
+        "x": "Wednesday",
+        "type": 2,
+        "y": 2
+      }
+    ]
+  },
+  {
+    "id": "type_3",
+    "color": "hsl(3, 70%, 50%)",
+    "data": [
+      {
+        "x": "Friday",
+        "type": 3,
+        "y": 4
+      },
+      {
+        "x": "Monday",
+        "type": 3,
+        "y": 5
+      },
+      {
+        "x": "Saturday",
+        "type": 3,
+        "y": 3
+      },
+      {
+        "x": "Sunday",
+        "type": 3,
+        "y": 3
+      },
+      {
+        "x": "Thursday",
+        "type": 3,
+        "y": 3
+      },
+      {
+        "x": "Tuesday",
+        "type": 3,
+        "y": 3
+      },
+      {
+        "x": "Wednesday",
+        "type": 3,
+        "y": 6
+      }
+    ]
+  },
+  {
+    "id": "type_4",
+    "color": "hsl(4, 70%, 50%)",
+    "data": [
+      {
+        "x": "Friday",
+        "type": 4,
+        "y": 4
+      },
+      {
+        "x": "Monday",
+        "type": 4,
+        "y": 2
+      },
+      {
+        "x": "Saturday",
+        "type": 4,
+        "y": 1
+      },
+      {
+        "x": "Sunday",
+        "type": 4,
+        "y": 6
+      },
+      {
+        "x": "Thursday",
+        "type": 4,
+        "y": 4
+      },
+      {
+        "x": "Tuesday",
+        "type": 4,
+        "y": 3
+      },
+      {
+        "x": "Wednesday",
+        "type": 4,
+        "y": 6
+      }
+    ]
+  }
+]
