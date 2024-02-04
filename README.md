@@ -54,5 +54,4 @@ CrimeAware is a comprehensive web application designed to provide users with a t
    ```bash
    git clone https://github.com/your-username/CrimeAware.git
    cd CrimeAware
-   ```bash
 
