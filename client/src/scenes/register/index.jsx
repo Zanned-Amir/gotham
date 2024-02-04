@@ -24,12 +24,13 @@ const Register = () => {
   const checkoutSchema = yup.object().shape({
     fullName: yup.string().required(),
     phoneNumber: yup.number().required(),
+
     email: yup.string().email().required(),
     password: yup.string().required(),
   });
   const handleFormSubmit = (values) => {
     console.log(values);
-    fetch("http://localhost/user/register",{method: "POST", body: JSON.stringify(values)}).then(async(res) => {
+    fetch("http://localhost:3000/user/register",{method: "POST",headers:{'Content-Type':'application/json'},mode : "cors", body: JSON.stringify(values)}).then(async(res) => {
       if (!res.ok){
         throw new Error('Network response was not ok');
       }
@@ -38,7 +39,7 @@ const Register = () => {
 
     })
     .catch(()=> alert("Failed to log in"));
-    navigate("/dashboard")
+    navigate("/")
     
   };
     const handleClick = (path) => () => {
@@ -99,11 +100,11 @@ const Register = () => {
                 <div id="gender-radio-group">Gender</div>
         <div role="group" aria-labelledby="gender-radio-group">
           <label>
-            <Field type="radio" name="gender" value="Male" />
+            <Field type="radio" name="gender" value="Male" required />
             Male
           </label>
           <label>
-            <Field type="radio" name="gender" value="Female" />
+            <Field type="radio" name="gender" value="Female" required/>
             Female
           </label>
         </div>

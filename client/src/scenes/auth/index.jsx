@@ -8,9 +8,17 @@ import { useTheme } from '@mui/material';
 import { tokens } from "../../theme";
 import { useNavigate } from "react-router-dom";
 
-const Auth = () => {
+const Auth = ({setIsLoggedin}) => {
+
+   
+  
   
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  if (token) navigate('/dashboard');
+  const handleClick = (path) => () => {
+    navigate(path);
+  };
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -24,16 +32,20 @@ const Auth = () => {
   });
   const handleFormSubmit =  (values) => {
     console.log(values);
-    fetch("http://localhost/user/login",{method: "POST", body: JSON.stringify(values)}).then(async(res) => {
+    fetch("http://localhost:3000/user/login",{method: "POST",headers:{'Content-Type':'application/json'},mode : "cors", body : JSON.stringify(values)}).then(async(res) => {
       if (!res.ok){
         throw new Error('Network response was not ok');
+      } else {
+        
+        const response = await res.json();
+        localStorage.setItem("token",response.token);
+setIsLoggedin(true);
+        navigate("/dashboard")
       }
-      const response = await res.json();
-      localStorage.setItem("token",response.token);
 
     })
     .catch(()=> alert("Failed to log in"));
-    navigate("/dashboard")
+   
     
   };
       
@@ -42,7 +54,7 @@ const Auth = () => {
       <Box flex="1" height="100%" width="100%"style={{backgroundImage: 'url("https://media.giphy.com/media/lTLV2erK8vf1MIz4Rk/giphy.gif")', backgroundSize: 'cover', backgroundPosition: 'center'}}/>
       <Box flex="1" m="20px" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
         <Formik
-          onSubmit={() => handleFormSubmit(initialValues)}
+          onSubmit={ handleFormSubmit}
           initialValues={initialValues}
           validationSchema={checkoutSchema}
         >
@@ -54,7 +66,7 @@ const Auth = () => {
             handleChange,
             handleSubmit,
           }) => (
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={(values) => handleSubmit(values)} >
               <Header title="LOGIN" subtitle="enter your data" />
               <Box width = {"30vw"}
                 display="grid"
@@ -118,7 +130,7 @@ const Auth = () => {
                 <Button type="submit" color="secondary" variant="contained" >
                   Login
                 </Button>
-                <Button type="submit" color="secondary" variant="contained" sx={{ ml: "20px" }} >
+                <Button  color="secondary" variant="contained" sx={{ ml: "20px" }} onClick={handleClick("/register")}>
                   
                   Register
                 </Button>

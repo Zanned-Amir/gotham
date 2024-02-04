@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
@@ -36,24 +32,14 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-const Sidebar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(() => { 
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }
-  , [isLoggedIn]);
+const Sidebar = ({isLoggedin}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
   return (
-    <Box
+    isLoggedin ? (<Box
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.grey[800]} !important`,
@@ -65,10 +51,10 @@ const Sidebar = () => {
           padding: "5px 35px 5px 20px !important",
         },
         "& .pro-inner-item:hover": {
-          color: "#868dfb !important",
+          color: `${theme.palette.mode === 'dark' ? colors.dun[500] : colors.grey[500]}!important`,
         },
         "& .pro-menu-item.active": {
-          color: "#6870fa !important",
+          color: `${theme.palette.mode === 'dark' ? colors.dun[500] : colors.grey[500]}!important`,
         },
       }}
     >
@@ -110,23 +96,17 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ed Roh
+                  WAYNE
                 </Typography>
-                <Typography variant="h5" color={colors.dun[500]}>
-                  VP Fancy Admin
+                <Typography variant="h5" color={theme.palette.mode === 'dark' ? colors.dun[500] : colors.grey[500]}>
+                  Ensure your path
                 </Typography>
               </Box>
             </Box>
           )}
-          {isLoggedIn ? (
+          
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <Item
-              title="Auth"
-              to="/"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            
 
             <Typography
               variant="h6"
@@ -142,20 +122,8 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
-              title="Contacts Information"
-              to="/contacts"
-              icon={<ContactsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Invoices Balances"
-              to="/invoices"
-              icon={<ReceiptOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            
+            
 
             <Typography
               variant="h6"
@@ -165,19 +133,13 @@ const Sidebar = () => {
               Pages
             </Typography>
             <Item
-              title="Profile Form"
-              to="/form"
+              title="Declaration"
+              to="/declare  "
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
-              title="Calendar"
-              to="/calendar"
-              icon={<CalendarTodayOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            
             <Item
               title="FAQ Page"
               to="/faq"
@@ -221,20 +183,11 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-          </Box>) : (
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <Item
-              title="Auth"
-              to="/"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
           </Box>
-          )}
         </Menu>
       </ProSidebar>
-    </Box>
+    </Box>) : null
+    
   );
 };
 

@@ -33,26 +33,5 @@ router.get("/getbyid/:id", (req, res) => {
     });
 });
 
-router.delete("/del/:id", (req, res) => {
-  Stolen.findByIdAndDelete({ _id: req.params.id })
-    .then((deletedStolen) => {
-      res.status(200).send(deletedStolen);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
-});
-
-router.put("/update/:id", (req, res) => {
-  let id = req.params.id;
-  let data = req.body;
-  Stolen.findByIdAndUpdate({ _id: id }, data)
-    .then((updatedStolen) => {
-      res.status(200).send(updatedStolen);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
-});
 
 module.exports = router;

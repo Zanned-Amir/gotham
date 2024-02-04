@@ -11,39 +11,43 @@ import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import HM from "./scenes/heatmap";
 import Bar from "./scenes/bar";
-// import Dashboard from "./scenes/dashboard";
+import Dashboard from "./scenes/dashboard";
+import FAQ from "./scenes/faq";
+import Declare from "./scenes/declare";
 
 function App() {
   const [theme, colorMode] = useMode();
   const [isLoggedin, setIsLoggedin] = useState(false);
   
   
-useEffect(() => { 
   const token = localStorage.getItem('token');
+useEffect(() => { 
   if (token) {
     setIsLoggedin(true);
   } else {
     setIsLoggedin(false);
   }
 }
-, [isLoggedin]);
+, [token]);
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-        <Sidebar  /> 
+        <Sidebar isLoggedin={isLoggedin} /> 
           <main className="content">
-            <Topbar />
+            <Topbar isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin} />
             <Routes>
-              <Route path="/" element={<Auth />} />
+              <Route path="/" element={<Auth setIsLoggedin={setIsLoggedin} />} />
               <Route path="/register" element={<Register />} />
               <Route path="/welcome" element={<Welcome />} />
-              {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/line" element={<Line />} />
               <Route path="/pie" element={<Pie />} />
               <Route path="/heatmap" element={<HM />} />
               <Route path="/bar" element={<Bar />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/declare" element={<Declare />} />
             </Routes>
           </main>
         </div>

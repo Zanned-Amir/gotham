@@ -29,23 +29,35 @@ const generateActivationCode = () => {
 };
 
 router.post("/register", async (req, res) => {
-  const activationCode = generateActivationCode();
-  const userData = req.body;
-  userData.activationCode = activationCode;
-
-  const user = new User(userData);
-
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(userData.password, salt);
-  user.password = hashedPassword;
-
   try {
+    // Check if required fields are present in the request body
+    const { fullName, phoneNumber, email, password, gender } = req.body;
+    if (!fullName || !phoneNumber || !email || !password || !gender) {
+      return res.status(400).send("All fields are required");
+    }
+
+    const activationCode = generateActivationCode();
+    const userData = { ...req.body, activationCode };
+    console.log(userData)
+
+    const user = new User(userData);
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(userData.password, salt);
+    user.password = hashedPassword;
+
     const savedUser = await user.save();
     // sendConfirmationEmail(savedUser.email, savedUser.activationCode);
     res.status(200).send(savedUser);
   } catch (err) {
     console.error(err);
-    res.status(400).send(err.message || "Registration failed");
+
+    // Check if the error is related to bcrypt hashing
+    if (err.message && err.message.includes("data and salt arguments required")) {
+      res.status(500).send("Internal Server Error - Password hashing issue");
+    } else {
+      res.status(400).send(err.message || "Registration failed");
+    }
   }
 });
 
@@ -116,26 +128,6 @@ router.get("/getbyid/:id", verifyToken, async (req, res) => {
   }
 });
 
-router.delete("/del/:id", verifyToken, async (req, res) => {
-  try {
-    const deletedUser = await User.findByIdAndDelete(req.params.id);
-    res.status(200).send(deletedUser);
-  } catch (err) {
-    console.error(err);
-    res.status(400).send(err.message || "Failed to delete user");
-  }
-});
 
-router.put("/update/:id", verifyToken, async (req, res) => {
-  try {
-    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    res.status(200).send(updatedUser);
-  } catch (err) {
-    console.error(err);
-    res.status(400).send(err.message || "Failed to update user");
-  }
-});
 
 module.exports = router;
