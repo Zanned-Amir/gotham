@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -20,6 +20,7 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  
   return (
     <MenuItem
       active={selected === title}
@@ -36,6 +37,16 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 };
 
 const Sidebar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => { 
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }
+  , [isLoggedIn]);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -107,7 +118,7 @@ const Sidebar = () => {
               </Box>
             </Box>
           )}
-
+          {isLoggedIn ? (
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Auth"
@@ -210,7 +221,17 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+          </Box>) : (
+          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+            <Item
+              title="Auth"
+              to="/"
+              icon={<HomeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
           </Box>
+          )}
         </Menu>
       </ProSidebar>
     </Box>

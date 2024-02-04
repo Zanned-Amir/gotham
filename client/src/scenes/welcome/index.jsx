@@ -17,17 +17,19 @@ const Welcome = () => {
       justifyContent="center"
     >
       <Box
-        flex="1"
-        height="80%"
+        height="75%"
         width="100%"
         style={{
+          
           backgroundImage:
             'url("https://media1.tenor.com/m/Axe9entbcmoAAAAC/batman-and-robin-batman.gif")',
+            
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
       ></Box>
+      <Box display={"flex"} alignItems={"space-between"} gap={"10px"}>
       <Button
         color="secondary"
         variant="contained"
@@ -44,6 +46,8 @@ const Welcome = () => {
       >
         go back
       </Button>
+      </Box>
+      
     </Box>
   );
 };

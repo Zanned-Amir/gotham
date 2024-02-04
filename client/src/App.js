@@ -17,8 +17,8 @@ import Bar from "./scenes/bar";
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
-  const [isLogin, setIsLogin] = useState(true);
   const [isLoggedin, setIsLoggedin] = useState(false);
+  
   
 useEffect(() => { 
   const token = localStorage.getItem('token');
@@ -34,10 +34,9 @@ useEffect(() => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-        <Sidebar isSidebar={isSidebar} /> 
+        <Sidebar  /> 
           <main className="content">
-            {/* <Topbar isLogin={isLogin} /> */}
-            <Topbar setIsSidebar={setIsSidebar} />
+            <Topbar />
             <Routes>
               <Route path="/" element={<Auth />} />
               <Route path="/user" element={<User isLoggedin={isLoggedin} />} />

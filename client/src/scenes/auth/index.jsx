@@ -9,6 +9,7 @@ import { tokens } from "../../theme";
 import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
+  
   const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

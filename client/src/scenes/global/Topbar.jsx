@@ -9,7 +9,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 
-// const Topbar = (isLogin) => {
+
   const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
