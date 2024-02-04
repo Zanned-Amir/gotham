@@ -15,7 +15,6 @@ const Auth = () => {
   const colors = tokens(theme.palette.mode);
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const initialValues = {
-    
     email: "",
     password: "",
   };
@@ -23,19 +22,27 @@ const Auth = () => {
     email: yup.string().email().required(),
     password: yup.string().required(),
   });
-  const handleFormSubmit = (values) => {
+  const handleFormSubmit =  (values) => {
     console.log(values);
+    fetch("http://localhost/user/login",{method: "POST", body: JSON.stringify(values)}).then(async(res) => {
+      if (!res.ok){
+        throw new Error('Network response was not ok');
+      }
+      const response = await res.json();
+      localStorage.setItem("token",response.token);
+
+    })
+    .catch(()=> alert("Failed to log in"));
+    navigate("/dashboard")
     
   };
-  const handleClick = (path) => () => {
-    navigate(path);
-  };    
+      
   return (
     <Box display="flex" height="100vh">
       <Box flex="1" height="100%" width="100%"style={{backgroundImage: 'url("https://media.giphy.com/media/lTLV2erK8vf1MIz4Rk/giphy.gif")', backgroundSize: 'cover', backgroundPosition: 'center'}}/>
       <Box flex="1" m="20px" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
         <Formik
-          onSubmit={handleFormSubmit}
+          onSubmit={() => handleFormSubmit(initialValues)}
           initialValues={initialValues}
           validationSchema={checkoutSchema}
         >
@@ -47,7 +54,7 @@ const Auth = () => {
             handleChange,
             handleSubmit,
           }) => (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
               <Header title="LOGIN" subtitle="enter your data" />
               <Box width = {"30vw"}
                 display="grid"
@@ -108,10 +115,10 @@ const Auth = () => {
                 />
               </Box>
               <Box display="flex" justifyContent="center" mt="20px">
-                <Button type="submit" color="secondary" variant="contained" onClick={handleClick("/user")}>
+                <Button type="submit" color="secondary" variant="contained" >
                   Login
                 </Button>
-                <Button type="submit" color="secondary" variant="contained" sx={{ ml: "20px" }} onClick={handleClick("/register")}>
+                <Button type="submit" color="secondary" variant="contained" sx={{ ml: "20px" }} >
                   
                   Register
                 </Button>

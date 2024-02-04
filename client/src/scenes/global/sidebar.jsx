@@ -42,6 +42,8 @@ const Sidebar = () => {
     const token = localStorage.getItem('token');
     if (token) {
       setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
     }
   }
   , [isLoggedIn]);
@@ -116,7 +118,7 @@ const Sidebar = () => {
               </Box>
             </Box>
           )}
-          {isLoggedIn === true ? (
+          {isLoggedIn ? (
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Auth"
