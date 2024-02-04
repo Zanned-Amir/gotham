@@ -8,6 +8,7 @@ const PieChart = () => {
   const colors = tokens(theme.palette.mode);
   return (
     <ResponsivePie
+    
       data={data}
       theme={{
         axis: {
@@ -46,6 +47,7 @@ const PieChart = () => {
         from: "color",
         modifiers: [["darker", 0.2]],
       }}
+      
       arcLinkLabelsSkipAngle={10}
       arcLinkLabelsTextColor={colors.grey[100]}
       arcLinkLabelsThickness={2}
