@@ -48,10 +48,3 @@ CrimeAware is a comprehensive web application designed to provide users with a t
 - **Integration:**
   - Connects with external APIs for phone operators and law enforcement agencies.
 
-## Setup
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/CrimeAware.git
-   cd CrimeAware
-
